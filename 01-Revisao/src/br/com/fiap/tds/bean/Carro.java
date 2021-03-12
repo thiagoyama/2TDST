@@ -15,4 +15,10 @@ public class Carro extends Veiculo {
 		System.out.println("Carro andando..");
 	}
 	
+	//Sobescrever o método de object
+	@Override
+	public String toString() {
+		return "Ano : " + getAno() + " Modelo: " + getModelo(); 
+	}
+	
 }

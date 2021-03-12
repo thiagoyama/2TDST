@@ -17,6 +17,8 @@ public class Veiculo {
 	
 	private String cor;
 	
+	private TipoVeiculo tipo; //gets e sets
+	
 	//Tipos primitivos: boolean, char, byte, short, int, long, float, double
 	//Valores padrão: boolean = false, números = 0;
 	
@@ -74,6 +76,14 @@ public class Veiculo {
 
 	public void setCor(String cor) {
 		this.cor = cor;
+	}
+
+	public TipoVeiculo getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(TipoVeiculo tipo) {
+		this.tipo = tipo;
 	}
 	
 }

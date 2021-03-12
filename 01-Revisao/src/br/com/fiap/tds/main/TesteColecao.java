@@ -27,7 +27,8 @@ public class TesteColecao {
 		
 		//foreach
 		for (Carro c : lista) {
-			System.out.println(c.getAno() + " " + c.getModelo());
+			System.out.println(c);
+			//System.out.println(c.getAno() + " " + c.getModelo());
 		}
 		
 		lista.forEach(c -> System.out.println(c.getAno()
