@@ -18,8 +18,10 @@ public abstract class Conta {
 	protected double saldo;
 	
 	//CTRL + 3 -> ggas (Gets e sets), gcuf (construtor)
-	
-	public abstract void depositar(double valor);
+	@Deprecated
+	public void depositar(double valor) {
+		saldo += valor;
+	}
 	
 	public abstract void retirar(double valor) throws SaldoInsuficienteException;
 	

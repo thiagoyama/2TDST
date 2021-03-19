@@ -1,5 +1,6 @@
 package br.com.fiap.exception;
 
+@SuppressWarnings("all")
 public class SaldoInsuficienteException extends Exception {
 
 	public SaldoInsuficienteException() {
