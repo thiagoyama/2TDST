@@ -1,0 +1,14 @@
+Banco de dados:
+
+Sequence:
+SQ_TB_PEDIDO
+
+Tabela:
+
+TB_PEDIDO
+---
+*cd_pedido(PK)	NUMBER
+ds_pedido	VARCHAR(60)
+*dt_pedido	DATE
+*nm_cliente	VARCHAR(100)
+vl_pedido	NUMBER
