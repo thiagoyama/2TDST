@@ -28,7 +28,7 @@ public class Atualizacao {
 		//Retorna a cópia gerenciada do filme
 		Filme filmeGerenciado = em.merge(filme);
 		
-		//filme.setNome("Teste");
+		//filmeGerenciado.setNome("Teste");
 		
 		em.getTransaction().begin();
 		em.getTransaction().commit();
