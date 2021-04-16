@@ -48,7 +48,7 @@ public abstract class GenericDaoImpl<E,K> implements GenericDao<E,K> {
 
 	@Override
 	public void commit() throws CommitException {
-		try {
+		try { 
 			em.getTransaction().begin();
 			em.getTransaction().commit();
 		} catch (Exception e) {

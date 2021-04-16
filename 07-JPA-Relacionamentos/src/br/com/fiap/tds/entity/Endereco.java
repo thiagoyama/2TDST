@@ -1,10 +1,12 @@
 package br.com.fiap.tds.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,6 +29,12 @@ public class Endereco {
 	@Column(name="ds_bairro", length = 40)
 	private String bairro;
 	
+	//Mapear a relação um-para-um bidirecional
+	//mappedBy -> sempre utilizado no bidirecional
+	//mappedBy -> nome do atributo que mapeia a relaçao no banco
+	@OneToOne(mappedBy = "endereco", cascade = CascadeType.ALL)
+	private Padaria padoca;
+	 
 	public Endereco() {}
 
 	public Endereco(String logradouro, String numero, String bairro) {
@@ -74,6 +82,14 @@ public class Endereco {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+
+	public Padaria getPadoca() {
+		return padoca;
+	}
+
+	public void setPadoca(Padaria padoca) {
+		this.padoca = padoca;
 	}
 	
 }

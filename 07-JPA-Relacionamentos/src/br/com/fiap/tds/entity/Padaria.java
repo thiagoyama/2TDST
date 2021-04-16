@@ -1,10 +1,13 @@
 package br.com.fiap.tds.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -27,13 +30,19 @@ public class Padaria {
 	@Column(name="ds_horario", length = 100)
 	private String horarioFuncionamento;
 	
+	//Mapeamento da relação um para um
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="cd_endereco", nullable = false)
+	private Endereco endereco;
+	
 	public Padaria() {}
 
-	public Padaria(String nome, Double faturamento, String horarioFuncionamento) {
+	public Padaria(String nome, Double faturamento, String horarioFuncionamento, Endereco endereco) {
 		super();
 		this.nome = nome;
 		this.faturamento = faturamento;
 		this.horarioFuncionamento = horarioFuncionamento;
+		this.endereco = endereco;
 	}
 
 	public Padaria(int codigo, String nome, Double faturamento, String horarioFuncionamento) {
@@ -74,6 +83,14 @@ public class Padaria {
 
 	public void setHorarioFuncionamento(String horarioFuncionamento) {
 		this.horarioFuncionamento = horarioFuncionamento;
+	}
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
 	}
 	
 }
