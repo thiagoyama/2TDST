@@ -8,6 +8,7 @@ import br.com.fiap.tds.dao.impl.EnderecoDaoImpl;
 import br.com.fiap.tds.dao.impl.PadariaDaoImpl;
 import br.com.fiap.tds.entity.Endereco;
 import br.com.fiap.tds.entity.Padaria;
+import br.com.fiap.tds.entity.Produto;
 import br.com.fiap.tds.exception.CommitException;
 import br.com.fiap.tds.singleton.EntityManagerFactorySingleton;
 
@@ -31,6 +32,16 @@ public class CadastroTeste {
 		
 		//Cadastrar um endereco 
 		//enderecoDao.create(endereco);
+		
+		//Instanciar 3 produtos 
+		Produto produto1 = new Produto("Pão", "Pão francês", 12.0);
+		Produto produto2 = new Produto("Bolo", "Bolo de laranja", 20.0);
+		Produto produto3 = new Produto("Café", "Media", 4.0);
+		
+		//Adicionar os produtos na padaria
+		padoca.addProduto(produto1);
+		padoca.addProduto(produto2);
+		padoca.addProduto(produto3);
 		
 		//Cadastrar uma padaria
 		padocaDao.create(padoca);

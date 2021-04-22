@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,6 +28,11 @@ public class Produto {
 	
 	@Column(name="vl_produto")
 	private Double valor;
+	
+	//Relacionamento muitos-para-um
+	@ManyToOne
+	@JoinColumn(name="cd_padaria", nullable = false)
+	private Padaria padaria;
 	
 	public Produto() {}
 
@@ -74,6 +81,14 @@ public class Produto {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	public Padaria getPadaria() {
+		return padaria;
+	}
+
+	public void setPadaria(Padaria padaria) {
+		this.padaria = padaria;
 	}
 	
 }

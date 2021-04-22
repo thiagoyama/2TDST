@@ -1,12 +1,17 @@
 package br.com.fiap.tds.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,9 +36,24 @@ public class Padaria {
 	private String horarioFuncionamento;
 	
 	//Mapeamento da relação um para um
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="cd_endereco", nullable = false)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@JoinColumn(name="cd_endereco")
 	private Endereco endereco;
+	
+	//Mapeamento bidirecional um-para-muitos
+	@OneToMany(mappedBy = "padaria", cascade = CascadeType.ALL)
+	private List<Produto> produtos;
+	
+	//Método para adicionar produtos (utilizado somente no um-para-muitos)
+	//Utilizado para persistir em cascata, para garantir o preenchimento da FK
+	public void addProduto(Produto produto) {
+		if (produtos == null)
+			produtos = new ArrayList<>();
+		//Adicionar o produto na lista
+		produtos.add(produto);
+		//Setar a padaria do produto
+		produto.setPadaria(this); //this -> o próprio objeto padaria
+	}
 	
 	public Padaria() {}
 
@@ -91,6 +111,14 @@ public class Padaria {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
 	}
 	
 }
