@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -35,13 +37,24 @@ public class Padaria {
 	@Column(name="ds_horario", length = 100)
 	private String horarioFuncionamento;
 	
-	//Mapeamento da relação um para um
+	//Mapeamento da relação um-para-um
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinColumn(name="cd_endereco")
 	private Endereco endereco;
 	
+	//Mapeamento do relacionamento muitos-para-muitos
+	@ManyToMany(cascade = CascadeType.PERSIST)
+	//JoinTable -> configura a tabela associativa
+	//name -> nome da tabela associativa
+	//joinColumns -> configura a PK/FK que armazena o código da classe atual (Padaria)
+	//inverseJoinColumns -> configura a PK/FK que armazena o código da classe da relação
+	@JoinTable(name="TB_PADARIA_FORNECEDOR", 
+			joinColumns = @JoinColumn(name="cd_padaria"),
+			inverseJoinColumns = @JoinColumn(name="cd_fornecedor"))
+	private List<Fornecedor> fornecedores;
+	
 	//Mapeamento bidirecional um-para-muitos
-	@OneToMany(mappedBy = "padaria", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "padaria", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Produto> produtos;
 	
 	//Método para adicionar produtos (utilizado somente no um-para-muitos)
@@ -119,6 +132,14 @@ public class Padaria {
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}
+
+	public List<Fornecedor> getFornecedores() {
+		return fornecedores;
+	}
+
+	public void setFornecedores(List<Fornecedor> fornecedores) {
+		this.fornecedores = fornecedores;
 	}
 	
 }

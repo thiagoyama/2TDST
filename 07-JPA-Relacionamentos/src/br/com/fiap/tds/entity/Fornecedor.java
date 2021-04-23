@@ -1,10 +1,13 @@
 package br.com.fiap.tds.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -26,6 +29,10 @@ public class Fornecedor {
 	
 	@Column(name="ds_email", length = 60)
 	private String email;
+	
+	//Mapeamento do relacionamento muitos-para-muitos bidirecional
+	@ManyToMany(mappedBy = "fornecedores")
+	private List<Padaria> padarias;
 	
 	public Fornecedor() {}
 	
@@ -74,6 +81,14 @@ public class Fornecedor {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Padaria> getPadarias() {
+		return padarias;
+	}
+
+	public void setPadarias(List<Padaria> padarias) {
+		this.padarias = padarias;
 	}
 	
 }

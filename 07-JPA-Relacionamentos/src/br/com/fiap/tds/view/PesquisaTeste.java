@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 
 import br.com.fiap.tds.dao.PadariaDao;
 import br.com.fiap.tds.dao.impl.PadariaDaoImpl;
+import br.com.fiap.tds.entity.Fornecedor;
 import br.com.fiap.tds.entity.Padaria;
 import br.com.fiap.tds.entity.Produto;
 import br.com.fiap.tds.exception.EntityNotFoundException;
@@ -22,7 +23,7 @@ public class PesquisaTeste {
 		
 		try {
 			//Pesquisar uma padoca por código
-			Padaria padoca = dao.findById(2);
+			Padaria padoca = dao.findById(22);
 		
 			//Exibir o nome da padaria
 			System.out.println(padoca.getNome());
@@ -32,8 +33,15 @@ public class PesquisaTeste {
 			
 			//Exibir o nome dos produtos da padaria
 			List<Produto> produtos = padoca.getProdutos();
+			System.out.println("Produtos:");
 			for (Produto produto : produtos) {
 				System.out.println(produto.getNome());
+			}
+			
+			//Exibir os fornecedores da padaria
+			System.out.println("Fornecedores");
+			for (Fornecedor fornecedor : padoca.getFornecedores()) {
+				System.out.println(fornecedor.getNome());
 			}
 		
 		} catch (EntityNotFoundException e) {
