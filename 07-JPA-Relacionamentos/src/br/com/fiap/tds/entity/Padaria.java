@@ -39,7 +39,7 @@ public class Padaria {
 	
 	//Mapeamento da relação um-para-um
 	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name="cd_endereco")
+	@JoinColumn(name="cd_endereco", nullable = false)
 	private Endereco endereco;
 	
 	//Mapeamento do relacionamento muitos-para-muitos
