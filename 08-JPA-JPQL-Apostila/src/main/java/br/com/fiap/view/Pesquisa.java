@@ -10,14 +10,17 @@ import javax.persistence.EntityManager;
 import br.com.fiap.dao.CidadeDAO;
 import br.com.fiap.dao.ClienteDAO;
 import br.com.fiap.dao.PacoteDAO;
+import br.com.fiap.dao.ReservaDAO;
 import br.com.fiap.dao.TransporteDAO;
 import br.com.fiap.dao.impl.CidadeDAOImpl;
 import br.com.fiap.dao.impl.ClienteDAOImpl;
 import br.com.fiap.dao.impl.PacoteDAOImpl;
+import br.com.fiap.dao.impl.ReservaDAOImpl;
 import br.com.fiap.dao.impl.TransporteDAOImpl;
 import br.com.fiap.entity.Cidade;
 import br.com.fiap.entity.Cliente;
 import br.com.fiap.entity.Pacote;
+import br.com.fiap.entity.Reserva;
 import br.com.fiap.entity.Transporte;
 import br.com.fiap.singleton.EntityManagerFactorySingleton;
 import br.com.fiap.util.DataUtil;
@@ -123,9 +126,34 @@ public class Pesquisa {
 		System.out.println("Buscar clientes por nome, sem case sensitive");
 		clientes.forEach(c -> System.out.println(c.getNome()));
 		
+		//Contar os clientes por estado
+		long qtd = clienteDao.contarPorEstado("PR");
+		System.out.println("Contar clientes por estado: " + qtd);
+		
+		//Somar preços dos pacotes por transporte
+		transporte = transporteDao.pesquisar(1);
+		double soma = pacoteDao.somarPrecoPorTransporte(transporte);
+		System.out.println("A soma dos preços dos pacotes por transporte: " + soma);
+		
+		//Instanciar uma ReservaDao
+		ReservaDAO reservaDao = new ReservaDAOImpl(em);
+		//Pesquisar a reserva por cpf
+		List<Reserva> reservas = reservaDao.buscarPorCpfCliente("88892992922");
+		//Exibir o nome, cpf e data de reserva
+		reservas.forEach(r -> System.out.println(r.getCliente().getNome() + " " + 
+				r.getCliente().getCpf() + " " + DataUtil.formatar(r.getDataReserva())));
+		
+		//Pesquisar reserva por nome da empresa de transporte
+		reservas = reservaDao.buscarPorEmpresaTransporte("O");
+		reservas.forEach(r -> System.out.println(r.getPacote().getTransporte().getEmpresa() + " " + 
+														r.getPacote().getDescricao()));
+		
+		//Buscar pacotes por preço menor e qtd de dias maior
+		pacotes = pacoteDao.buscarPorQtdDiasMaiorEPrecoMenor(5, 5000);
+		pacotes.forEach(p -> System.out.println(p.getDescricao() + " " + p.getQtdDias() + " " + p.getPreco()));
+		
 		//Fechar
 		em.close();
 		EntityManagerFactorySingleton.getInstance().close();
 	}
 }
-

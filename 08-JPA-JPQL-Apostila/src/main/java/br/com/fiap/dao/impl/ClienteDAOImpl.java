@@ -51,11 +51,19 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente,Integer> implements C
 				.getResultList();
 	}
 
+	//Buscar por parte do nome do cliente  sem case sensitive e ordenado por nome
 	@Override
 	public List<Cliente> buscarPorNome2(String nome) {
-		return em.createQuery("", Cliente.class)
-				.setParameter("", nome)
+		return em.createQuery("from Cliente c where lower(c.nome) like lower(:name) order by c.nome", Cliente.class)
+				.setParameter("name", "%" + nome + "%")
 				.getResultList();
+	}
+
+	@Override
+	public long contarPorEstado(String estado) {
+		return em.createQuery("select count(c) from Cliente c where c.endereco.cidade.uf = :vaiDarBom", Long.class)
+				.setParameter("vaiDarBom", estado)
+				.getSingleResult();
 	}
 
 }
