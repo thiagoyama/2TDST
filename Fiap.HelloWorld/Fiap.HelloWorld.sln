@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fiap.HelloWorld.UI", "Fiap.HelloWorld.UI\Fiap.HelloWorld.UI.csproj", "{F40566C3-EE9B-47E7-9C4F-5B2E60B8BCFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F40566C3-EE9B-47E7-9C4F-5B2E60B8BCFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40566C3-EE9B-47E7-9C4F-5B2E60B8BCFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40566C3-EE9B-47E7-9C4F-5B2E60B8BCFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40566C3-EE9B-47E7-9C4F-5B2E60B8BCFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2E68F853-F280-4038-BFB4-3552DB11B274}
+	EndGlobalSection
+EndGlobal
