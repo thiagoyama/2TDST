@@ -18,16 +18,6 @@ namespace Fiap.HelloWorld.UI
 }
 
 
-//Criar as classes abaixo:
 
-//Animal
-//    - Genero
-//    - Idade
-//    - Peso
-
-//Cachorro
-//    - Raca
-//    - Nome
-//    - Dono
 
     
