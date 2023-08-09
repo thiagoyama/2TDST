@@ -23,3 +23,10 @@ Cachorro dog = new Cachorro(15, 5, "Brutus")
 
 //Exibir o nome, peso, idade e dono
 Console.WriteLine($"Nome: {dog.Nome}, Peso: {dog.Peso}, Idade: {dog.Idade}, Dono: {dog.Dono}");
+
+dog.Idade = 10;
+Console.WriteLine(dog.Idade);
+
+//Fazer o aluno andar!
+aluno.Andar();
+aluno.Andar("FIAP");

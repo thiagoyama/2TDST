@@ -14,6 +14,17 @@ namespace Fiap.HelloWorld.UI
         public DateTime DataMatricula { get; set; }
         public bool Ativo { get; set; }
 
+        public override void Trabalhar()
+        {
+            Console.WriteLine("Aluno trabalhando");
+        }
+
+        //Sobrescrever o método andar
+        public override void Andar()
+        {
+
+        }
+
     }
 }
 
