@@ -30,3 +30,21 @@ Console.WriteLine(dog.Idade);
 //Fazer o aluno andar!
 aluno.Andar();
 aluno.Andar("FIAP");
+
+//Setar o genero do aluno
+aluno.Genero = Genero.Masculino;
+//Exibir o genero
+Console.WriteLine(aluno.Genero);
+
+//Criar uma lista de Cachorro
+IList<Cachorro> lista = new List<Cachorro>();
+
+//Adicionar 2 dogs na lista
+var dog1 = new Cachorro(15, 2, "Marrie");
+var dog2 = new Cachorro(5, 8, "Rex");
+
+//Exibir a quantidade de dogs na lista
+
+
+//Exibir os dados dos dogs da lista
+

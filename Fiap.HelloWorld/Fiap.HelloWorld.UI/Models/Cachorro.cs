@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fiap.HelloWorld.UI.Models
 {
-    internal class Cachorro : Animal
+    internal class Cachorro : Animal, IMamifero
     {
         public string Nome { get; set; }
         public string Raca { get; set; }
@@ -22,6 +22,16 @@ namespace Fiap.HelloWorld.UI.Models
         public Cachorro(float peso, int idade, string nome) : base(peso, idade)
         {
             Nome = nome;
+        }
+
+        public void Amamentar()
+        {
+            Console.WriteLine("Cachorro amamentando");
+        }
+
+        public void Parir()
+        {
+            Console.WriteLine("Cachorro dando cachorrinhos");
         }
     }
 }

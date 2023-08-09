@@ -13,7 +13,7 @@ namespace Fiap.HelloWorld.UI.Models
         private int _idade;
 
         //Propriedades (Getters e Setters)
-
+        public Genero Genero { get; set; }
 
         public string Cpf { get; set; }
 

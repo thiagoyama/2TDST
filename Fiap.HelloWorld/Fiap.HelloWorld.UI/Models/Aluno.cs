@@ -22,7 +22,7 @@ namespace Fiap.HelloWorld.UI
         //Sobrescrever o método andar
         public override void Andar()
         {
-
+            Console.WriteLine("Aluno andando");
         }
 
     }
