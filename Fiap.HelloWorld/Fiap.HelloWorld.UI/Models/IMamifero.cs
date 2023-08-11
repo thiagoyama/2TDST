@@ -8,7 +8,7 @@ namespace Fiap.HelloWorld.UI.Models
 {
     internal interface IMamifero
     {
-        void Amamentar();
+        void Amamentar(int quantidade);
         void Parir();
     }
 }

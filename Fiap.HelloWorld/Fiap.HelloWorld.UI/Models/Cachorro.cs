@@ -24,9 +24,14 @@ namespace Fiap.HelloWorld.UI.Models
             Nome = nome;
         }
 
-        public void Amamentar()
+        public void Amamentar(int quantidade)
         {
-            Console.WriteLine("Cachorro amamentando");
+            //validar se a quantidade é maior do que zero
+            if (quantidade < 1)
+            {
+                throw new ArgumentException("Quantidade deve ser maior ou igual a 1");
+            }
+            Console.WriteLine($"Cachorro amamentando {quantidade} filhos");
         }
 
         public void Parir()

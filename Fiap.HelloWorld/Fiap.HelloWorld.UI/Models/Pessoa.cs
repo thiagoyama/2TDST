@@ -40,6 +40,8 @@ namespace Fiap.HelloWorld.UI.Models
 
         public void Andar(string destino)
         {
+            //validar se o destino existe, se não existir lançar uma exception
+
             Console.WriteLine($"Andando até {destino}");
         }
     }//class
