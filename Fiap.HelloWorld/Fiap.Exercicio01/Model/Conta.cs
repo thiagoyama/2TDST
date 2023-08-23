@@ -9,10 +9,21 @@ namespace Fiap.Banco.Model
     //Classe abstrata: não pode ser instanciada e pode ter métodos abstratos
     internal abstract class Conta
     {
+        private decimal _saldo;
+
         public int Agencia { get; set; }
         public int Numero { get; set; }
         public DateTime DataAbertura { get; set; }
-        public decimal Saldo { get; set; }
+
+        public decimal Saldo { 
+            get { return _saldo; }
+            set 
+            {
+                if (value <= 0)
+                    throw new ArgumentException("Valor precisa ser maior do que zero");
+                _saldo = value; 
+            } 
+        }
 
         public virtual void Depositar(decimal valor)
         {
