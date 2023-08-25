@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Produto</h1>
+
+<p>Produtos da loja  FIAP!!!</p>
+
+<!-- Criar um formulário HTML com nome e preco e botão de submit -->
+
+<form method="post" action="produto/cadastrar">
+    <div>
+        <label>Nome</label>
+        <input type="text" name="nome"/>
+    </div>
+    <div>
+        <label>Preço</label>
+        <input type="number" name="preco"/>
+    </div>
+    <button>Cadastrar</button>
+</form>
