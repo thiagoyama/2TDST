@@ -1,0 +1,34 @@
+﻿@model Checkpoint
+@{
+    ViewData["Title"] = "Calcular";
+}
+
+<h1>Calcular</h1>
+
+<h2>@ViewData["media"]</h2>
+@if (Model != null)
+{
+    <ul>
+        <li>CP1: @Model.Cp1</li>
+        <li>CP2: @Model.Cp2</li>
+        <li>CP3: @Model.Cp3</li>
+        <li>Média: @Model.Media</li>
+    </ul>
+}
+
+<form method="post">
+    <div>
+        <label for="id-cp1">Checkpoint 1</label>
+        <input id="id-cp1" type="number" name="cp1"/>
+    </div>
+    <div>
+        <label for="id-cp2">Checkpoint 2</label>
+        <input type="number" id="id-cp2" name="cp2" />
+    </div>
+    <div>
+        <label for="id-cp3">Checkpoint 3</label>
+        <input type="number" id="id-cp3" name="cp3" />
+    </div>
+    <button>Calcular</button>
+</form>
+
