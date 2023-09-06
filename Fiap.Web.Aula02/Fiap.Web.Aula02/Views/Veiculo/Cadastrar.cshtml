@@ -1,0 +1,35 @@
+﻿@model Veiculo
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+<form>
+    <div class="mb-3">
+        <label asp-for="Placa"></label>
+        <input asp-for="Placa" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Modelo"></label>
+        <input asp-for="Modelo" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Marca"></label>
+        <input asp-for="Marca" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Km"></label>
+        <input asp-for="Km" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <input asp-for="Disponivel" />
+        <label asp-for="Disponivel"></label>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Ano"></label>
+        <input asp-for="Ano" class="form-control" />
+    </div>
+    <button class="btn btn-primary">Cadastrar</button>
+</form>
