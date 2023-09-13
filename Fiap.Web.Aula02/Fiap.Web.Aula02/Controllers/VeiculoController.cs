@@ -13,13 +13,24 @@ namespace Fiap.Web.Aula02.Controllers
         //Usar o index para exibir todos os veiculos em uma tabela HTML
 
         public IActionResult Index()
+        {            
+            return View(_lista); //Envia a lista para a view
+        }
+
+        [HttpGet]
+        public IActionResult Cadastrar()
         {
             return View();
         }
 
-        public IActionResult Cadastrar()
+        [HttpPost]
+        public IActionResult Cadastrar(Veiculo veiculo)
         {
-            return View();
+            //Cadastrar na lista
+            _lista.Add(veiculo);
+            //Mostrar uma mensagem de sucesso
+            TempData["mensagem"] = "Veículo cadastrado!";
+            return RedirectToAction("Cadastrar"); //Nome do método
         }
     }
 }

@@ -1,7 +1,30 @@
-﻿
+﻿@model List<Veiculo>
 @{
     ViewData["Title"] = "Index";
 }
 
 <h1>Index</h1>
-
+<a asp-action="cadastrar">Cadastrar</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Modelo</th>
+            <th>Ano</th>
+            <th>Disponível</th>
+            <th>Placa</th>
+            <th>Km</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+            <tr>
+                <td>@item.Modelo</td>
+                <td>@item.Ano</td>
+                <td>@item.Disponivel</td>
+                <td>@item.Placa</td>
+                <td>@item.Km</td>
+            </tr>
+        }
+    </tbody>
+</table>

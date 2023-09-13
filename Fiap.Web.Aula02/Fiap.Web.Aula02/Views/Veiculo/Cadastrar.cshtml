@@ -6,7 +6,15 @@
 
 <h1>Cadastrar</h1>
 
-<form>
+@if (TempData["mensagem"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["mensagem"]
+    </div>
+}
+
+<a asp-action="index">Veículos</a>
+<form asp-action="Cadastrar">
     <div class="mb-3">
         <label asp-for="Placa"></label>
         <input asp-for="Placa" class="form-control"/>
