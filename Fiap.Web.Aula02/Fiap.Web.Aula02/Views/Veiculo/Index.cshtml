@@ -4,26 +4,42 @@
 }
 
 <h1>Index</h1>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
 <a asp-action="cadastrar">Cadastrar</a>
 <table class="table">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Modelo</th>
             <th>Ano</th>
             <th>Disponível</th>
             <th>Placa</th>
             <th>Km</th>
+            <th>Tipo</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach(var item in Model)
         {
             <tr>
+                <td>@item.Id</td>
                 <td>@item.Modelo</td>
                 <td>@item.Ano</td>
-                <td>@item.Disponivel</td>
+                <td>@(item.Disponivel?"Sim":"Não")</td>
                 <td>@item.Placa</td>
                 <td>@item.Km</td>
+                <td>@item.Tipo</td>
+                <td>
+                    <a asp-action="editar" asp-route-id="@item.Id" class="btn btn-primary">Editar</a>
+                </td>
             </tr>
         }
     </tbody>

@@ -7,14 +7,34 @@ namespace Fiap.Web.Aula02.Controllers
     {
         //Lista para gravar os veiculos
         private static IList<Veiculo> _lista = new List<Veiculo>();
-
-        //TAREFA!
-        //Cadastrar o veiculo na lista
-        //Usar o index para exibir todos os veiculos em uma tabela HTML
+        private static int _id = 0;
 
         public IActionResult Index()
         {            
             return View(_lista); //Envia a lista para a view
+        }
+
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            //Pesquisar o veiculo pelo ID
+            var veiculo = _lista.First(v => v.Id == id);
+            //Enviar o objeto Veiculo para a View
+            return View(veiculo);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(Veiculo veiculo)
+        {
+            //Atualizar o veiculo na lista
+            //Pesquisar a posição do veiculo na lista
+            var index = _lista.ToList().FindIndex(v => v.Id == veiculo.Id);
+            //Atualiza o veiculo na lista, adicionando o novo veiculo na posição do veiculo antigo
+            _lista[index] = veiculo;
+            //Enviar uma mensagem para view
+            TempData["msg"] = "Veículo Atualizado!";
+            //Redirect para a listagem (index)
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -26,6 +46,7 @@ namespace Fiap.Web.Aula02.Controllers
         [HttpPost]
         public IActionResult Cadastrar(Veiculo veiculo)
         {
+            veiculo.Id = ++_id;
             //Cadastrar na lista
             _lista.Add(veiculo);
             //Mostrar uma mensagem de sucesso
