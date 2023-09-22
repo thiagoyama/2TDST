@@ -9,6 +9,17 @@ namespace Fiap.Web.Aula02.Controllers
         private static IList<Veiculo> _lista = new List<Veiculo>();
         private static int _id = 0;
 
+        [HttpPost]
+        public IActionResult Remover(int id)
+        {
+            //Remove o veiculo da lista (pesquisando o veiculo pelo id)
+            _lista.Remove(_lista.First(v => v.Id == id));
+            //Mensagem de sucesso
+            TempData["msg"] = "Veiculo removido!";
+            //Redirect para a Index
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Index()
         {            
             return View(_lista); //Envia a lista para a view
