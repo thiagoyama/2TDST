@@ -6,6 +6,8 @@
 
 <h1>Cadastrar</h1>
 
+<alert texto="@TempData["msg"]"></alert>
+
 @if (TempData["mensagem"] != null)
 {
     <div class="alert alert-success">
@@ -45,5 +47,5 @@
             <option>Selecione</option>
         </select>
     </div>
-    <button class="btn btn-primary">Cadastrar</button>
+    <botao></botao>
 </form>
