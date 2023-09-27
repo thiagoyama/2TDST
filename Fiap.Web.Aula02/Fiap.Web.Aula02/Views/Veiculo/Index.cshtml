@@ -5,12 +5,7 @@
 
 <h1>Index</h1>
 
-@if (TempData["msg"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["msg"]
-    </div>
-}
+<alert texto="@TempData["msg"]"></alert>
 
 <a asp-action="cadastrar">Cadastrar</a>
 <table class="table">

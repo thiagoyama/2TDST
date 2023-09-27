@@ -6,46 +6,13 @@
 
 <h1>Cadastrar</h1>
 
-<alert texto="@TempData["msg"]"></alert>
-
-@if (TempData["mensagem"] != null)
-{
-    <div class="alert alert-success">
-        @TempData["mensagem"]
-    </div>
-}
+<alert texto="@TempData["mensagem"]"></alert>
 
 <a asp-action="index">Veículos</a>
 <form asp-action="Cadastrar">
-    <div class="mb-3">
-        <label asp-for="Placa"></label>
-        <input asp-for="Placa" class="form-control"/>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Modelo"></label>
-        <input asp-for="Modelo" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Marca"></label>
-        <input asp-for="Marca" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Km"></label>
-        <input asp-for="Km" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <input asp-for="Disponivel" />
-        <label asp-for="Disponivel"></label>
-    </div>
-    <div class="mb-3">
-        <label asp-for="Ano"></label>
-        <input asp-for="Ano" class="form-control" />
-    </div>
-    <div class="mb-3">
-        <label asp-for="Tipo"></label>
-        <select asp-for="Tipo" asp-items="@Html.GetEnumSelectList<TipoVeiculo>()" class="form-select">
-            <option>Selecione</option>
-        </select>
-    </div>
+   
+    <!--Adicionar o conteudo do arquivo _Form.cshtml-->
+    <partial name="_Form"></partial>
+
     <botao></botao>
 </form>
