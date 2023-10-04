@@ -1,0 +1,32 @@
+﻿@model Filme
+
+<div class="mb-3">
+    <label asp-for="Titulo"></label>
+    <input asp-for="Titulo" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Sinopse"></label>
+    <textarea asp-for="Sinopse" class="form-control"></textarea>
+</div>
+<div class="mb-3">
+    <label asp-for="Duracao"></label>
+    <input asp-for="Duracao" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Bilheteria"></label>
+    <input asp-for="Bilheteria" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="DataLancamento"></label>
+    <input asp-for="DataLancamento" class="form-control" />
+</div>
+<div class="mb-3">
+    <label asp-for="Categoria"></label>
+    <select asp-for="Categoria" asp-items="@Html.GetEnumSelectList<CategoriaFilme>()" class="form-control">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="mb-3">
+    <input asp-for="Disponivel"/>
+    <label asp-for="Disponivel"></label>
+</div>

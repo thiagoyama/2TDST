@@ -1,4 +1,5 @@
 ﻿using Fiap.Web.Aula03.DataBase;
+using Fiap.Web.Aula03.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Fiap.Web.Aula03.Controllers
@@ -15,7 +16,24 @@ namespace Fiap.Web.Aula03.Controllers
 
         public IActionResult Index()
         {
+            var lista = _context.Filmes.ToList();
+            return View(lista);
+        }
+
+        [HttpGet]
+        public IActionResult Cadastrar()
+        {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Cadastrar(Filme filme)
+        {
+            _context.Filmes.Add(filme);
+            _context.SaveChanges();
+            TempData["msg"] = "Filme registrado!";
+            return RedirectToAction("Cadastrar");
+        }
+
     }
 }

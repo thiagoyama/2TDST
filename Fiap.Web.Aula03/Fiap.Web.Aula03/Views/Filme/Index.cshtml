@@ -1,0 +1,31 @@
+﻿@model List<Filme>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Filmes</h1>
+<a asp-action="cadastrar">Cadastrar</a>
+<table class="table table-striped">
+    <tr>
+        <th>Título</th>
+        <th>Sinopse</th>
+        <th>Duração</th>
+        <th>Bilheteria</th>
+        <th>Data Lançamento</th>
+        <th>Categoria</th>
+        <th>Disponível</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Titulo</td>
+            <td>@item.Sinopse</td>
+            <td>@item.Duracao</td>
+            <td>@item.Bilheteria</td>
+            <td>@item.DataLancamento.ToShortDateString()</td>
+            <td>@item.Categoria</td>
+            <td>@(item.Disponivel?"Sim":"Não")</td>
+        </tr>
+    }
+</table>
