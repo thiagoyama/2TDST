@@ -14,6 +14,27 @@ namespace Fiap.Web.Aula03.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            //Pesquisar o filme pelo Id
+            var filme = _context.Filmes.Find(id);
+            //Retorar a view com o objeto filme
+            return View(filme);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(Filme filme)
+        {
+            //Atualizar o filme no banco de dados
+            _context.Filmes.Update(filme);
+            _context.SaveChanges();
+            //Enviar uma para a view
+            TempData["msg"] = "Filme atualizado!";
+            //Redirecionar para a listagem
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Index()
         {
             var lista = _context.Filmes.ToList();
