@@ -13,6 +13,16 @@
     </div>
 }
 
+<form class="row mb-3" asp-action="index" method="get">
+    <div class="col-4">
+        <input type="text" class="form-control" name="termoBusca" 
+                                                placeholder="Digite o título" />
+    </div>  
+    <div class="col-2">
+        <button class="btn btn-success">Pesquisar</button>
+    </div>
+</form>
+
 <a asp-action="cadastrar">Cadastrar</a>
 <table class="table table-striped">
     <tr>
@@ -37,7 +47,7 @@
             <td>@(item.Disponivel?"Sim":"Não")</td>
             <td>
                 <a asp-action="editar" asp-route-id="@item.FilmeId" class="btn btn-sm btn-outline-dark">Editar</a>
-                <button onclick="churros.value = @item.FilmeId" type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button onclick="churros.value = @item.FilmeId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Excluir
                 </button>
             </td>

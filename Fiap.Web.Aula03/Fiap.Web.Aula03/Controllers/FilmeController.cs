@@ -14,6 +14,20 @@ namespace Fiap.Web.Aula03.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public IActionResult Remover(int id)
+        {
+            //Pesquisar o filme
+            var filme = _context.Filmes.Find(id);
+            //Remove o filme
+            _context.Filmes.Remove(filme);
+            _context.SaveChanges();
+            //Mensagem de sucesso
+            TempData["msg"] = "Filme removido!";
+            //Redireciona para a index
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public IActionResult Editar(int id)
         {
@@ -35,9 +49,12 @@ namespace Fiap.Web.Aula03.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string termoBusca)
         {
-            var lista = _context.Filmes.ToList();
+            //Pesquisar por parte do titulo
+            var lista = _context.Filmes
+                    .Where(f => f.Titulo.Contains(termoBusca) || termoBusca == null)
+                    .ToList();
             return View(lista);
         }
 
