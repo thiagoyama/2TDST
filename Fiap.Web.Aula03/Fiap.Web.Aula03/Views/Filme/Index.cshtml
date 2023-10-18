@@ -15,9 +15,9 @@
 
 <form class="row mb-3" asp-action="index" method="get">
     <div class="col-4">
-        <input type="text" class="form-control" name="termoBusca" 
-                                                placeholder="Digite o título" />
-    </div>  
+        <input type="text" class="form-control" name="termoBusca"
+               placeholder="Digite o título" />
+    </div>
     <div class="col-2">
         <button class="btn btn-success">Pesquisar</button>
     </div>
@@ -35,23 +35,32 @@
         <th>Disponível</th>
         <th></th>
     </tr>
-    @foreach (var item in Model)
+    @if (Model.Count == 0)
     {
         <tr>
-            <td>@item.Titulo</td>
-            <td>@item.Sinopse</td>
-            <td>@item.Duracao</td>
-            <td>@item.Bilheteria</td>
-            <td>@item.DataLancamento.ToShortDateString()</td>
-            <td>@item.Categoria</td>
-            <td>@(item.Disponivel?"Sim":"Não")</td>
-            <td>
-                <a asp-action="editar" asp-route-id="@item.FilmeId" class="btn btn-sm btn-outline-dark">Editar</a>
-                <button onclick="churros.value = @item.FilmeId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Excluir
-                </button>
-            </td>
+            <td colspan="8">Sem resultados</td>
         </tr>
+    }
+    else
+    {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Titulo</td>
+                <td>@item.Sinopse</td>
+                <td>@item.Duracao</td>
+                <td>@item.Bilheteria</td>
+                <td>@item.DataLancamento.ToShortDateString()</td>
+                <td>@item.Categoria</td>
+                <td>@(item.Disponivel ? "Sim" : "Não")</td>
+                <td>
+                    <a asp-action="editar" asp-route-id="@item.FilmeId" class="btn btn-sm btn-outline-dark">Editar</a>
+                    <button onclick="churros.value = @item.FilmeId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Excluir
+                    </button>
+                </td>
+            </tr>
+        }
     }
 </table>
 

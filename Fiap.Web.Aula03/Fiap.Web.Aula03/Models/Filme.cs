@@ -28,6 +28,13 @@ namespace Fiap.Web.Aula03.Models
         public int Duracao { get; set; }
         
         public decimal Bilheteria { get; set; }
+
+        //N:1
+        public Produtora Produtora { get; set; }
+        public int ProdutoraId { get; set; }
+
+        //N:M
+        public IList<FilmeAtor> FilmesAtores { get; set; }
     }
 
     public enum CategoriaFilme

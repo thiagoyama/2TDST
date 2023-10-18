@@ -17,6 +17,9 @@ namespace Fiap.Web.Aula03.Models
         
         public Nacionalidade Nacionalidade { get; set; }
         public bool Premiado { get; set; }
+
+        //N:M
+        public IList<FilmeAtor> FilmesAtores { get; set; }
     }
 
     public enum Nacionalidade
