@@ -8,8 +8,11 @@ namespace Fiap.Web.Aula03.Models
     {
         [Column("Id")]
         public int PresidenteId { get; set; }
-        [Required]
+
+        [Required, Display(Name = "Nome do Presidente")]
         public string? Nome { get; set; }
+
+        [DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
     }
 }

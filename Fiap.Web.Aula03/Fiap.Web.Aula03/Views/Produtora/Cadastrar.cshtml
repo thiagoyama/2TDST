@@ -1,0 +1,35 @@
+﻿@model Produtora
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastro de Produtora</h1>
+
+<form asp-action="cadastrar">
+    <div class="mb-3">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Premios"></label>
+        <input asp-for="Premios" class="form-control"/>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Ativo"/>
+        <label asp-for="Ativo"></label>
+    </div>
+    <fieldset>
+        <legend>Presidente</legend>
+        <div class="mb-3">
+            <label asp-for="Presidente.Nome"></label>
+            <input asp-for="Presidente.Nome" class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label asp-for="Presidente.DataNascimento"></label>
+            <input asp-for="Presidente.DataNascimento" class="form-control" />
+        </div>
+    </fieldset>
+    <button class="btn btn-primary">Cadastrar</button>
+</form>
+

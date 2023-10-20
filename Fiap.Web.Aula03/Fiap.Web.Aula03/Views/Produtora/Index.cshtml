@@ -1,0 +1,33 @@
+﻿@model List<Produtora>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Produtoras</h1>
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+<a asp-action="cadastrar">Cadastrar</a>
+<table class="table table-striped">
+    <tr>
+        <th>Produtora</th>
+        <th>Prêmios</th>
+        <th>Ativo</th>
+        <th>Presidente</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.Premios</td>
+            <td>@(item.Ativo?"Ativo":"Inativo")</td>
+            <td>@item.Presidente.Nome</td>
+        </tr>
+    }
+</table>
+
