@@ -27,6 +27,12 @@
     </select>
 </div>
 <div class="mb-3">
+    <label asp-for="Produtora"></label>
+    <select class="form-select" asp-for="ProdutoraId" asp-items="@ViewBag.produtoras">
+        <option>Selecione</option>
+    </select>
+</div>
+<div class="mb-3">
     <input asp-for="Disponivel"/>
     <label asp-for="Disponivel"></label>
 </div>

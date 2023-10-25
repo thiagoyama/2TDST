@@ -1,0 +1,30 @@
+﻿@model Ator
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+
+<h1>Cadastro de Ator</h1>
+
+<form asp-action="cadastrar">
+    <div class="mb-3">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="DataNascimento"></label>
+        <input asp-for="DataNascimento" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Nacionalidade"></label>
+        <select asp-for="Nacionalidade" asp-items="@Html.GetEnumSelectList<Nacionalidade>()" class="form-control">
+            <option>Selecione</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <input asp-for="Premiado" />
+        <label asp-for="Premiado"></label>
+    </div>
+    <button class="btn btn-primary">Cadastrar</button>
+</form>
+
