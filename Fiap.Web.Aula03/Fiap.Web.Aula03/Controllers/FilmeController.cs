@@ -16,6 +16,19 @@ namespace Fiap.Web.Aula03.Controllers
             _context = context;
         }
 
+        [HttpGet]
+        public IActionResult Info(int id)
+        {
+            //pesquisar todos os atores
+            var atores = _context.Atores.ToList();
+            //enviar a lista atores com viewbag
+            ViewBag.atores = atores;
+            //Pesquisa o filme pelo id
+            var filme = _context.Filmes.Include(f => f.Produtora).First(f => f.FilmeId == id);
+            //Retorna a página com o filme
+            return View(filme);
+        }
+
         [HttpPost]
         public IActionResult Remover(int id)
         {

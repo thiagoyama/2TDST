@@ -30,7 +30,8 @@ namespace Fiap.Web.Aula03.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var atores = _context.Atores.ToList();
+            return View(atores);
         }
     }
 }

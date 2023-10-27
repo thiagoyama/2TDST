@@ -1,10 +1,9 @@
-﻿
+﻿@model List<Ator>
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
+<h1>Atores</h1>
 
 @if (TempData["msg"] != null)
 {
@@ -12,3 +11,21 @@
         @TempData["msg"]
     </div>
 }
+
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Data Nascimento</th>
+        <th>Nacionalidade</th>
+        <th>Premiado</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>@item.DataNascimento.ToShortDateString()</td>
+            <td>@item.Nacionalidade</td>
+            <td>@(item.Premiado?"Sim":"Não")</td>
+        </tr>
+    }
+</table>

@@ -28,9 +28,7 @@
     <tr>
         <th>Título</th>
         <th>Sinopse</th>
-        <th>Duração</th>
-        <th>Bilheteria</th>
-        <th>Data Lançamento</th>
+        <th>Duração</th>       
         <th>Categoria</th>
         <th>Disponível</th>
         <th>Produtora</th>
@@ -49,13 +47,12 @@
             <tr>
                 <td>@item.Titulo</td>
                 <td>@item.Sinopse</td>
-                <td>@item.Duracao</td>
-                <td>@item.Bilheteria</td>
-                <td>@item.DataLancamento.ToShortDateString()</td>
+                <td>@item.Duracao</td>              
                 <td>@item.Categoria</td>
                 <td>@(item.Disponivel ? "Sim" : "Não")</td>
                 <td>@item.Produtora?.Nome</td>
                 <td>
+                    <a asp-action="info" asp-route-id="@item.FilmeId" class="btn btn-sm btn-outline-primary">Detalhes</a>
                     <a asp-action="editar" asp-route-id="@item.FilmeId" class="btn btn-sm btn-outline-dark">Editar</a>
                     <button onclick="churros.value = @item.FilmeId" type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Excluir
