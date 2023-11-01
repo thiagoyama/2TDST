@@ -16,11 +16,49 @@ namespace Fiap.Web.Aula03.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        public IActionResult Add(FilmeAtor filmeAtor)
+        {
+            //Cadastrar o FilmeAtor
+            _context.FilmesAtores.Add(filmeAtor);   
+            //Commit
+            _context.SaveChanges();
+            //Mensagem
+            TempData["msg"] = "Ator adicionado";
+            //Redirect
+            return RedirectToAction("Add", new {id = filmeAtor.FilmeId} );
+        }
+
+        [HttpGet]
+        public IActionResult Add(int id)
+        {
+            //Recuperar todos os atores que não
+            //estão no filme e enviar para a lista
+            var atoresFilmes = _context.FilmesAtores
+                .Where(f => f.FilmeId == id)
+                .Select(f => f.Ator)
+                .ToList();
+
+            var todosAtores = _context.Atores.ToList();
+
+            //Tira uma lista da outra
+            var lista = todosAtores.Where(f => !atoresFilmes.Contains(f));
+
+            ViewBag.atores = lista;
+            //Recuperar o filme e enviar para a view
+            var filme = _context.Filmes.Find(id);
+            ViewBag.filme = filme; 
+            return View();
+        }
+
         [HttpGet]
         public IActionResult Info(int id)
         {
-            //pesquisar todos os atores
-            var atores = _context.Atores.ToList();
+            //pesquisar todos os atores do filme
+            var atores = _context.FilmesAtores
+                .Where(f => f.FilmeId == id)
+                .Select(f => f.Ator)
+                .ToList();
             //enviar a lista atores com viewbag
             ViewBag.atores = atores;
             //Pesquisa o filme pelo id

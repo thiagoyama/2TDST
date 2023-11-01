@@ -27,7 +27,11 @@
     </tr>
 </table>
 
-<h2>Atores Disponíveis</h2>
+<div class="d-flex justify-content-between">
+    <h2>Atores</h2>
+    <a asp-action="add" asp-route-id="@Model.FilmeId" 
+                    class="btn btn-primary h-25">+</a>
+</div>
 
 <table class="table">
     <tr>

@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Add";
+}
+
+<h1>@ViewBag.filme.Titulo</h1>
+
+<h2>Atores para adicionar</h2>
+
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th></th>
+    </tr>
+    @foreach (var item in ViewBag.atores)
+    {
+        <tr>
+            <td>@item.Nome</td>
+            <td>
+                <button onclick="churros.value = @item.AtorId" type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    Adicionar
+                </button>
+            </td>
+        </tr>
+    }
+</table>
+<!--Botão para voltar para a página de info-->
+<a asp-action="info" asp-route-id="@ViewBag.filme.FilmeId" class="btn btn-primary">Voltar</a>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmação</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Deseja realmente excluir o filme?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="add">
+                    <input type="hidden" name="atorId" id="churros" />
+                    <input type="hidden" name="filmeId" value="@ViewBag.filme.FilmeId"/>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-primary">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
